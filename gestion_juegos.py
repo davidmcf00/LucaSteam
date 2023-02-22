@@ -149,7 +149,9 @@ def listar_juego():
               elemento["Other_Sales"], " | ",
               elemento["Global_Sales"], " | ")
         print("--------------------------------------------------------------------------------------------------------------------------------------------------------")
+        
 def borrar_juego():
     Name=input("Selecciona el juego que quieres borrar:")
     lista.remove (buscar_dicc(lista,"Name",Name))
     print("El juego eliminado es ", Name)
+
