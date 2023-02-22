@@ -8,9 +8,11 @@ def convert_csv():
         reader = csv.DictReader(csvfile)
         for row in reader:
             lista.append(row)
-    return(lista)
+    return (lista)
+
 
 lista = convert_csv()
+
 
 def buscar_dicc(it: Iterable[dict], clave: Hashable, valor: Any) -> Optional[dict]:
     for dicc in it:
@@ -28,15 +30,15 @@ def buscar_varios_dicc(it: Iterable[dict], clave: Hashable, valor: Any) -> Optio
 
 
 def alta_juego(name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales):
-      
-    lista.append({"Name": name, 
+
+    lista.append({"Name": name,
                   "Platform": platform,
                   "Year": year,
                   "Genre": genre,
                   "Publisher": publisher,
                   "NA_Sales": na_sales,
                   "EU_Sales": eu_sales,
-                  "JP_Sales":jp_sales,
+                  "JP_Sales": jp_sales,
                   "Other_Sales": other_sales,
                   "Global_Sales": global_sales})
 
@@ -53,8 +55,3 @@ def alta_juego_input():
     Other_Sales=input("Introduce otras ventas:")
     Global_Sales=input("Introduce las ventas globales:")
     alta_juego(Name, Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,Global_Sales)
-    
-def borrar_juego():
-    Name=input("Selecciona el juego que quieres borrar:")
-    lista.remove (buscar_dicc(lista,"Name",Name))
-    print("El juego eliminado es ", Name)
