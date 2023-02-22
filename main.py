@@ -3,7 +3,7 @@ import os
 from typing import Any, Hashable, Iterable, Optional
 
 
-def pasar_lista():
+def convert_csv():
     lista = []
     with open('vgsales.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
@@ -13,43 +13,39 @@ def pasar_lista():
         
 
     
-def mostrar_opciones ():
-    menu_principal()
+def menu_opciones ():
+   
     permanecer = True
     
     while permanecer:
+        mostrar_opciones()
         try:
-            eleccion = int(input("Dígame una cantidad en pesetas: "))
+            eleccion = int(input("Seleciona la característica a la que quieres acceder: "))
         except:
             print("Solo acepto las opciones que te di")
              
         try:
             match eleccion:
                 case 1:
+                    os.system('clear')
                     print("Has selecionado el 1")
-                case 2:
-                    print("Has selecionado el 2")
-                case 3:
-                    print("Has selecionado el 3")
-                case 4:
-                    print("Has selecionado el 4")
                 case 13:
+                    os.system('clear')
                     print("Adios")
                     permanecer = False
                 case _:
-                    print("Estoy muerto")
+                    os.system('clear')
+                    print("No se que has seleccionado")
         except:
-            print("No se que has seleccionado")
+            os.system('clear')
+            print("No se que has seleccionado, solo acepto las siguientes opciones:")
             
             
-def menu_principal():
+def mostrar_opciones():
     print("Menu")
     print(" 1 - Insertar un videojuego")
-    print(" 2 - Eliminar un videojuego")
-    print(" 3 - Modificar un videojuego")
-    print(" 4 - Listar los videojuegos")
     print(" 13 - Salir del programa")
     print("--------------------------------")
         
         
-mostrar_opciones()
+menu_opciones()

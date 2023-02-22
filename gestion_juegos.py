@@ -1,6 +1,6 @@
 from main import *
 
-lista = pasar_lista()
+lista = convert_csv()
 
 def buscar_dicc(it: Iterable[dict], clave: Hashable, valor: Any) -> Optional[dict]:
     for dicc in it:
