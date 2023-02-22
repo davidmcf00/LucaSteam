@@ -16,15 +16,20 @@ def buscar_varios_dicc(it: Iterable[dict], clave: Hashable, valor: Any) -> Optio
             lista_juegos.append(dicc)
     return lista_juegos
 
-valor = lista.index(buscar_dicc(lista, "Name", "PGA European Tour"))
+def alta_juego(name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales):
+      
+    lista.append({"Name": name, 
+                  "Platform": platform,
+                  "Year": year,
+                  "Genre": genre,
+                  "Publisher": publisher,
+                  "NA_Sales": na_sales,
+                  "EU_Sales": eu_sales,
+                  "JP_Sales":jp_sales,
+                  "Other_Sales": other_sales,
+                  "Global_Sales": global_sales})
 
-indice_valor = lista.index(buscar_dicc(lista, "Name", "PGA European Tour"))
 
-juegos_ano_2011 = buscar_varios_dicc(lista, "Year", "2011")
 
-print(valor)
-print()
-print(indice_valor)
-print()
-print(juegos_ano_2011)
+
 
