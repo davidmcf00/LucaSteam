@@ -53,3 +53,8 @@ def alta_juego_input():
     Other_Sales=input("Introduce otras ventas:")
     Global_Sales=input("Introduce las ventas globales:")
     alta_juego(Name, Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,Global_Sales)
+    
+def borrar_juego():
+    Name=input("Selecciona el juego que quieres borrar:")
+    lista.remove (buscar_dicc(lista,"Name",Name))
+    print("El juego eliminado es ", Name)
