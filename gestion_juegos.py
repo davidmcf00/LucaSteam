@@ -114,15 +114,15 @@ def modificar_juego_input():
     modificar_juego(registro, nuevo_nombre_juego, nueva_plataforma_juego,
                     nuevo_ano_juego, nuevo_genero_juego, nuevo_publisher_juego, nuevo_na_sales_juego,
                     nuevo_eu_sales_juego, nuevo_jp_sales_juego, nuevo_other_sales_juego, nuevo_global_sales_juego)
-    
-    
-def listar_juego(lista):
+
+
+def listar_juego():
     print("| Rank | Name | Platform | Year | Genre | Publisher | NA Sales | EU Sales | JP Sales | Other Sales | Global Sales |")
-    for elemento in lista:     
-        print(" | ", elemento["Rank"], " | ", 
-              elemento["Name"], " | ", 
-              elemento["Platform"], " | ", 
-              elemento["Year"], " | ", 
+    for elemento in lista:
+        print(" | ", elemento["Rank"], " | ",
+              elemento["Name"], " | ",
+              elemento["Platform"], " | ",
+              elemento["Year"], " | ",
               elemento["Genre"], " | ",
               elemento["Publisher"], " | ",
               elemento["NA_Sales"], " | ",
@@ -131,5 +131,3 @@ def listar_juego(lista):
               elemento["Other_Sales"], " | ",
               elemento["Global_Sales"], " | ")
         print("--------------------------------------------------------------------------------------------------------------------------------------------------------")
-        
-listar_juego(lista)

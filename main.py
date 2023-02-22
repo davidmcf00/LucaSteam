@@ -21,13 +21,13 @@ def menu_opciones():
                     alta_juego_input()
                 case 2:
                     os.system('clear')
-
+                    
                 case 3:
                     os.system('clear')
-
+                    modificar_juego_input()
                 case 4:
                     os.system('clear')
-
+                    listar_juego()
                 case 13:
                     os.system('clear')
                     print("Adios")
