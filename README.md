@@ -1,3 +1,0 @@
-# LucaSteam
-Proyecto 
-prueba
