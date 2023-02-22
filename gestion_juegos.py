@@ -53,3 +53,22 @@ def alta_juego_input():
     Other_Sales=input("Introduce otras ventas:")
     Global_Sales=input("Introduce las ventas globales:")
     alta_juego(Name, Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,Global_Sales)
+    
+    
+def listar_juego(lista):
+    print("| Rank | Name | Platform | Year | Genre | Publisher | NA Sales | EU Sales | JP Sales | Other Sales | Global Sales |")
+    for elemento in lista:     
+        print(" | ", elemento["Rank"], " | ", 
+              elemento["Name"], " | ", 
+              elemento["Platform"], " | ", 
+              elemento["Year"], " | ", 
+              elemento["Genre"], " | ",
+              elemento["Publisher"], " | ",
+              elemento["NA_Sales"], " | ",
+              elemento["EU_Sales"], " | ",
+              elemento["JP_Sales"], " | ",
+              elemento["Other_Sales"], " | ",
+              elemento["Global_Sales"], " | ")
+        print("--------------------------------------------------------------------------------------------------------------------------------------------------------")
+        
+listar_juego(lista)
