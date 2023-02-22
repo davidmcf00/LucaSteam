@@ -8,6 +8,7 @@ def menu_opciones():
 
     while permanecer:
         mostrar_opciones()
+        eleccion = ""
         try:
             eleccion = int(
                 input("Seleciona la característica a la que quieres acceder: "))
@@ -21,13 +22,16 @@ def menu_opciones():
                     alta_juego_input()
                 case 2:
                     os.system('clear')
-                    
+                    borrar_juego()
                 case 3:
                     os.system('clear')
                     modificar_juego_input()
                 case 4:
                     os.system('clear')
                     listar_juego()
+                case 5:
+                    os.system('clear')
+                    buscar_por_nombre()
                 case 13:
                     os.system('clear')
                     print("Adios")
@@ -46,6 +50,7 @@ def mostrar_opciones():
     print(" 2 - Borrar un videojuego")
     print(" 3 - Modificar un videojuego")
     print(" 4 - Listar los videojuegos")
+    print(" 5 - Buscar por nombre")
     print(" 13 - Salir del programa")
     print("--------------------------------")
 
