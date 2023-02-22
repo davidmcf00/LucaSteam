@@ -1,29 +1,6 @@
-import csv
 import os
-from typing import Any, Hashable, Iterable, Optional
+from gestion_juegos import *
 
-
-def convert_csv():
-    lista = []
-    with open('vgsales.csv', newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            lista.append(row)
-    return(lista)
-
-def alta_juego_input():
-    Name=input("Introduce el juego que quieres dar de alta:")
-    Platform=input("Introduce la plataforma:")
-    Year=input("Introduce el año: ")
-    Genre=input("Introduce el genero:")
-    Publisher=input("Introduce el editor:")
-    NA_Sales=input("Introduce las ventas en América ")
-    EU_Sales=input("Introduce las ventas en Europa:")
-    JP_Sales=input("Introduce las ventas en Japón:")
-    Other_Sales=input("Introduce otras ventas:")
-    Global_Sales=input("Introduce las ventas globales:")
-    alta_juego(Name, Platform,Year,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,Global_Sales)
-        
     
 def menu_opciones ():
    
