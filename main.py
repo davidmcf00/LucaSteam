@@ -17,7 +17,7 @@ def menu_opciones ():
             match eleccion:
                 case 1:
                     os.system('clear')
-                    print("Has selecionado el 1")
+                    alta_juego_input()
                 case 13:
                     os.system('clear')
                     print("Adios")
@@ -36,6 +36,5 @@ def mostrar_opciones():
     print(" 13 - Salir del programa")
     print("--------------------------------")
         
-        
-print(convert_csv())
-print(alta_juego_input())
+
+menu_opciones()

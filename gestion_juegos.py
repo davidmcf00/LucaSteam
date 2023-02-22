@@ -4,7 +4,7 @@ from typing import Any, Hashable, Iterable, Optional
 
 def convert_csv():
     lista = []
-    with open('vgsales.csv', newline='') as csvfile:
+    with open('archivo.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             lista.append(row)
@@ -42,7 +42,7 @@ def alta_juego(name, platform, year, genre, publisher, na_sales, eu_sales, jp_sa
 
 
 def alta_juego_input():
-    Name=input("Introduce el juego que quieres dar de alta:")
+    Name=input("Introduce el onmbre del juego que quieres dar de alta:")
     Platform=input("Introduce la plataforma:")
     Year=input("Introduce el año: ")
     Genre=input("Introduce el genero:")
