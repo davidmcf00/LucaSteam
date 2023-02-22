@@ -1,3 +1,2 @@
 # LucaSteam
-Proyecto 
-prueba
+Proyecto LucaSteam
