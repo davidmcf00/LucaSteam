@@ -1,4 +1,3 @@
-import os
 from gestion_juegos import *
 
 
@@ -18,41 +17,41 @@ def menu_opciones():
 
         match eleccion:
             case 1:
-                os.system('clear')
+                clear()
                 alta_juego_input()
             case 2:
-                os.system('clear')
+                clear()
                 borrar_juego()
             case 3:
-                os.system('clear')
+                clear()
                 modificar_juego_input()
             case 4:
-                os.system('clear')
+                clear()
                 listar_juego()
             case 5:
-                os.system('clear')
+                clear()
                 buscar_por_nombre()
             case 6:
-                os.system('clear')
+                clear()
                 obtener_mas_vendidos()
             case 7:
-                os.system('clear')
+                clear()
                 lista_editores_input()
             case 8:
-                os.system('clear')
+                clear()
                 lista_juegos_plataforma_input()
             case 9:
-                os.system('clear')
+                clear()
                 juegos_siglo()
             case 10:
-                os.system('clear')
+                clear()
                 lista_juegos_genero_input()
             case 13:
-                os.system('clear')
+                clear()
                 print("Adios")
                 permanecer = False
             case _:
-                os.system('clear')
+                clear()
                 print("No se que has seleccionado")
                     
 """
