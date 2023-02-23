@@ -15,51 +15,48 @@ def menu_opciones():
         except:
             print("Solo acepto las opciones que te di")
 
-        match eleccion:
-            case 1:
-                os.system('clear')
-                alta_juego_input()
-            case 2:
-                os.system('clear')
-                borrar_juego()
-            case 3:
-                os.system('clear')
-                modificar_juego_input()
-            case 4:
-                os.system('clear')
-                listar_juego()
-            case 5:
-                os.system('clear')
-                buscar_por_nombre()
-            case 6:
-                os.system('clear')
-                mas_vendidos_mundo()
-            case 7:
-                os.system('clear')
-                lista_editores_input()
-            case 8:
-                os.system('clear')
-                lista_juegos_plataforma_input()
-            case 9:
-                os.system('clear')
-                juegos_siglo()
-            case 10:
-                os.system('clear')
-                lista_juegos_genero_input()
-            case 13:
-                os.system('clear')
-                print("Adios")
-                permanecer = False
-            case _:
-                os.system('clear')
-                print("No se que has seleccionado")
-
-
-""""
+        try:
+            match eleccion:
+                case 1:
+                    os.system('clear')
+                    alta_juego_input()
+                case 2:
+                    os.system('clear')
+                    borrar_juego()
+                case 3:
+                    os.system('clear')
+                    modificar_juego_input()
+                case 4:
+                    os.system('clear')
+                    listar_juego()
+                case 5:
+                    os.system('clear')
+                    buscar_por_nombre()
+                case 6:
+                    os.system('clear')
+                    mas_vendidos_mundo()
+                case 7:
+                    os.system('clear')
+                    lista_editores_input()
+                case 8:
+                    os.system('clear')
+                    lista_juegos_plataforma_input()
+                case 9:
+                    os.system('clear')
+                    juegos_siglo()
+                case 10:
+                    os.system('clear')
+                    lista_juegos_genero_input()
+                case 13:
+                    os.system('clear')
+                    print("Adios")
+                    permanecer = False
+                case _:
+                    os.system('clear')
+                    print("No se que has seleccionado")
         except:
             os.system('clear')
             print("No se que has seleccionado, solo acepto las siguientes opciones:")
-    """
 
 
 def mostrar_opciones():
