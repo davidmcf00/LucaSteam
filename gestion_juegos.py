@@ -8,7 +8,6 @@ import pandas as pd
 import numpy as np
 
 
-
 def convert_csv():
     lista = []
     with open('archivo.csv', newline='') as csvfile:
@@ -70,7 +69,7 @@ def borrar_juego():
     Name = input("Selecciona el juego que quieres borrar:")
     lista.remove(buscar_dicc(lista, "Name", Name))
     print("El juego eliminado es ", Name)
-    
+
 
 def modificar_juego(registro, Name, Platform, Year, Genre, Publisher, NA_Sales,
                     EU_Sales, JP_Sales, Other_Sales, Global_Sales):
@@ -153,8 +152,7 @@ def listar_juego():
               elemento["Other_Sales"], " | ",
               elemento["Global_Sales"], " | ")
         print("--------------------------------------------------------------------------------------------------------------------------------------------------------")
-        
-    
+
 
 def mas_vendidos_mundo(lista):
     limite = 5
@@ -165,11 +163,11 @@ def mas_vendidos_mundo(lista):
         contador += 1
         i += 1
         registro = pd.DataFrame(np.array([[elemento["Rank"], elemento["Name"], elemento["Platform"], elemento["Year"],
-        elemento["Genre"], elemento["Publisher"], elemento["NA_Sales"],
-        elemento["EU_Sales"], elemento["JP_Sales"], elemento["Other_Sales"],
-        elemento["Global_Sales"]]]),
-        columns=["Rank", "Name", "Platform", "Year", "Genre", "Publisher",
-        "NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales", "Global_Sales"])
+                                           elemento["Genre"], elemento["Publisher"], elemento["NA_Sales"],
+                                           elemento["EU_Sales"], elemento["JP_Sales"], elemento["Other_Sales"],
+                                           elemento["Global_Sales"]]]),
+                                columns=["Rank", "Name", "Platform", "Year", "Genre", "Publisher",
+                                         "NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales", "Global_Sales"])
         print(registro)
 
 
@@ -274,8 +272,6 @@ def lista_juego_2(lista):
 
 def elegir_plataforma():
 
-    # plataformas = ["Wii", "WiiU" "N64", "NES", "GB", "GBA", "SNES", "X360", "DS", "SNES", "PS", "PS2", "PS3", "PS4", "3DS", "XOne", "GC", "PC", "GEN"]
-
     plataformas = []
 
     for registro in lista:
@@ -315,8 +311,6 @@ def elegir_editores():
 
 
 def elegir_editores():
-
-    # plataformas = ["Wii", "WiiU" "N64", "NES", "GB", "GBA", "SNES", "X360", "DS", "SNES", "PS", "PS2", "PS3", "PS4", "3DS", "XOne", "GC", "PC", "GEN"]
 
     editores = []
 
