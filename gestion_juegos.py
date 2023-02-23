@@ -1,6 +1,7 @@
 import csv
 import pandas as pd
 import numpy as np
+import os
 from typing import Any, Hashable, Iterable, Optional
 
 
@@ -61,10 +62,20 @@ def alta_juego_input():
                EU_Sales, JP_Sales, Other_Sales, Global_Sales)
 
 
+"""def borrar_juego():
+    Name = input("Selecciona el juego que quieres borrar:")
+    lista.remove(buscar_dicc(lista, "Name", Name.title()))
+    print("El juego eliminado es ", Name)
+"""
 def borrar_juego():
     Name = input("Selecciona el juego que quieres borrar:")
-    lista.remove(buscar_dicc(lista, "Name", Name))
-    print("El juego eliminado es ", Name)
+    #valor_para_borrar = mostrar_registro(buscar_dicc(lista, "Name", Name.title()))
+    if buscar_dicc(lista, "Name", Name.title()) in lista:
+        lista.remove(buscar_dicc(lista, "Name", Name.title()))
+        print("El juego eliminado es: ")
+        print(mostrar_registro(buscar_dicc(lista, "Name", Name.title())))
+    else:
+        print("No existe ese juego")
 
 
 def modificar_juego(registro, Name, Platform, Year, Genre, Publisher, NA_Sales,
@@ -152,14 +163,17 @@ def listar_juego():
 
 def buscar_por_nombre():
     Name = input("Selecciona el juego que quieres buscar:")
-    registro = buscar_dicc(lista, "Name", Name)
-    mostrar_registro(registro)
+    registro = buscar_dicc(lista, "Name", Name.title())
+    if registro in lista:
+        mostrar_registro(registro)
+    else:
+        print("Juego no encontrado ")
 
 
 def mostrar_registro(elemento):
-    print()
-    print(" | Name | Platform | Year | Genre | Publisher | NA Sales | EU Sales | JP Sales | Other Sales | Global Sales |")
-    print(" | ", elemento["Name"], " | ",
+    if elemento:
+        print(" | Name | Platform | Year | Genre | Publisher | NA Sales | EU Sales | JP Sales | Other Sales | Global Sales |")
+        print(" | ", elemento["Name"], " | ",
           elemento["Platform"], " | ",
           elemento["Year"], " | ",
           elemento["Genre"], " | ",
@@ -169,7 +183,9 @@ def mostrar_registro(elemento):
           elemento["JP_Sales"], " | ",
           elemento["Other_Sales"], " | ",
           elemento["Global_Sales"], " | ")
-    print("--------------------------------------------------------------------------------------------------------------------------------------------------------")
+        print("--------------------------------------------------------------------------------------------------------------------------------------------------------")
+    else:
+        print("no existe")
 
 
 def elegir_genero():
@@ -188,10 +204,33 @@ def elegir_genero():
     for i in range(len(generos)):
         print(i, "-", generos[i])
     try:
-        genero_juego = int(
-            input("¿De que género es tu juego, escribe el número? "))
-    except:
-        print("Pon el número, porfa")
+        genero_juego = int(input("¿De que género es tu juego, escribe el número? "))
+        if genero_juego not in range(len(generos)):
+            raise ValueError()
+    except ValueError:
+        print("Por favor, introduce un número válido")
+        return elegir_genero()
+
+    return generos[genero_juego]
+
+def elegir_genero():
+    generos = []
+
+    for registro in lista:
+        generos.append(registro["Genre"])
+
+    generos = list(set(generos))
+
+    print("Elige uno de los siguientes géneros")
+    for i in range(len(generos)):
+        print(i, "-", generos[i])
+    try:
+        genero_juego = int(input("¿De que género es tu juego, escribe el número? "))
+        if genero_juego not in range(len(generos)):
+            raise ValueError()
+    except ValueError:
+        print("Por favor, introduce un número válido")
+        return elegir_genero()
 
     return generos[genero_juego]
 
@@ -213,6 +252,7 @@ def mas_vendidos_mundo(mas_vendidos):
                                          "NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales", "Global_Sales"])
         print(registro)
         
+        
 
 def obtener_mas_vendidos():
     mas_vendidos = []
@@ -233,6 +273,7 @@ def obtener_mas_vendidos():
         
 
 def juegos_siglo():
+    clear()
     registros_siglo = []
     for registro in lista:
         year = registro["Year"]
@@ -266,29 +307,26 @@ def lista_juego_2(lista):
                                 columns=["Rank", "Name", "Platform", "Year", "Genre", "Publisher",
                                          "NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales", "Global_Sales"])
         print(registro)
-
-
+        
 def elegir_plataforma():
-
     plataformas = []
-
     for registro in lista:
         plataformas.append(registro["Platform"])
-
     plataformas = list(set(plataformas))
-
     print("Elige una de las siguientes plataformas para buscar todos sus juegos")
     for i in range(len(plataformas)):
         print(i, "-", plataformas[i])
-    try:
-        genero_juego = int(
-            input("¿De que plataforma es tu juego, escribe el número? "))
-    except:
-        print("Pon el número, porfa")
-
+    while True:
+        try:
+            genero_juego = int(input("¿De qué plataforma es tu juego? Ingresa el número correspondiente: "))
+            if genero_juego in range(len(plataformas)):
+                break
+            else:
+                print("Por favor ingresa un número válido")
+        except ValueError:
+            print("Por favor ingresa un número válido")
     return plataformas[genero_juego]
-
-
+#
 def lista_juegos_plataforma_input():
     plataforma = elegir_plataforma()
     print("Has elegido los juegos para: ", plataforma)
@@ -307,7 +345,6 @@ def elegir_editores():
                 "Ubisoft", "Capcom", "Konami Digital Entertainment", "LucasArts", "505 Games",
                 "Virgin Interactive", "Warner Bros"]
 
-
 def elegir_editores():
 
     editores = []
@@ -320,15 +357,16 @@ def elegir_editores():
     print("Elige una de las siguientes empresas para buscar todos sus juegos")
     for i in range(len(editores)):
         print(i, "-", editores[i])
-    try:
-        genero_juego = int(
-            input("¿De que empresa es tu juego, escribe el número? "))
-    except:
-        print("Pon el número, porfa")
+    
+    genero_juego = None
+    while not isinstance(genero_juego, int) or genero_juego < 0 or genero_juego >= len(editores):
+        try:
+            genero_juego = int(input("¿De que empresa es tu juego, escribe el número? "))
+        except:
+            print("Pon el número, porfabor :)")
 
     return editores[genero_juego]
-
-
+#
 def lista_editores_input():
     editor = elegir_editores()
     print("Has elegido a la empresa", editor)
@@ -339,3 +377,10 @@ def lista_editores_input():
 def lista_juegos_editores(editor):
     lista_juegos = buscar_varios_dicc(lista, "Publisher", editor)
     lista_juego_2(lista_juegos)
+
+def clear():
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
+
