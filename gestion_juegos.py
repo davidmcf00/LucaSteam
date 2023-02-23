@@ -1,5 +1,8 @@
 import csv
+import pandas as pd
+import numpy as np
 from typing import Any, Hashable, Iterable, Optional
+
 
 
 def convert_csv():
@@ -132,3 +135,31 @@ def listar_juego(lista):
               elemento["Global_Sales"], " | ")
         print("--------------------------------------------------------------------------------------------------------------------------------------------------------")
         
+    
+
+def mas_vendidos_mundo(lista):
+    
+    
+    limite = 5
+    contador = 0
+
+    for elemento in lista:
+        contador += 1
+        if contador == limite:
+            break
+        registro = pd.DataFrame(np.array([[elemento["Rank"], elemento["Name"], elemento["Platform"], elemento["Year"],
+        elemento["Genre"], elemento["Publisher"], elemento["NA_Sales"],
+        elemento["EU_Sales"], elemento["JP_Sales"], elemento["Other_Sales"],
+        elemento["Global_Sales"]]]),
+        columns=["Rank", "Name", "Platform", "Year", "Genre", "Publisher",
+        "NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales", "Global_Sales"])
+        print(registro)
+                
+                
+            
+            
+        
+mas_vendidos_mundo(lista)
+
+
+
