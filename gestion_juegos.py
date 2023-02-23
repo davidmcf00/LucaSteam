@@ -1,9 +1,12 @@
 import csv
+import pandas as pd
+import numpy as np
 from typing import Any, Hashable, Iterable, Optional
 import unittest
 from unittest.mock import patch
 import pandas as pd
 import numpy as np
+
 
 
 def convert_csv():
@@ -144,12 +147,29 @@ def listar_juego():
               elemento["Other_Sales"], " | ",
               elemento["Global_Sales"], " | ")
         print("--------------------------------------------------------------------------------------------------------------------------------------------------------")
+        
+    
 
+def mas_vendidos_mundo(lista):
+    limite = 5
+    contador = 0
+    i = 0
+    while i < len(lista) and contador < limite:
+        elemento = lista[i]
+        contador += 1
+        i += 1
+        registro = pd.DataFrame(np.array([[elemento["Rank"], elemento["Name"], elemento["Platform"], elemento["Year"],
+        elemento["Genre"], elemento["Publisher"], elemento["NA_Sales"],
+        elemento["EU_Sales"], elemento["JP_Sales"], elemento["Other_Sales"],
+        elemento["Global_Sales"]]]),
+        columns=["Rank", "Name", "Platform", "Year", "Genre", "Publisher",
+        "NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales", "Global_Sales"])
+        print(registro)
+                    
+            
+            
+        
 
-def borrar_juego():
-    Name = input("Selecciona el juego que quieres borrar:")
-    lista.remove(buscar_dicc(lista, "Name", Name))
-    print("El juego eliminado es ", Name)
 
 
 def buscar_por_nombre():
