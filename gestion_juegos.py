@@ -66,6 +66,12 @@ def alta_juego_input():
                EU_Sales, JP_Sales, Other_Sales, Global_Sales)
 
 
+def borrar_juego():
+    Name = input("Selecciona el juego que quieres borrar:")
+    lista.remove(buscar_dicc(lista, "Name", Name))
+    print("El juego eliminado es ", Name)
+    
+
 def modificar_juego(registro, Name, Platform, Year, Genre, Publisher, NA_Sales,
                     EU_Sales, JP_Sales, Other_Sales, Global_Sales):
     registro.update({"Name": Name, "Platform": Platform, "Year": Year, "Genre": Genre, "Publisher": Publisher, "NA_Sales": NA_Sales,
@@ -165,11 +171,6 @@ def mas_vendidos_mundo(lista):
         columns=["Rank", "Name", "Platform", "Year", "Genre", "Publisher",
         "NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales", "Global_Sales"])
         print(registro)
-                    
-            
-            
-        
-
 
 
 def buscar_por_nombre():
