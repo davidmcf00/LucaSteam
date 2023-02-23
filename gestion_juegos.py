@@ -138,15 +138,13 @@ def listar_juego(lista):
     
 
 def mas_vendidos_mundo(lista):
-    
-    
     limite = 5
     contador = 0
-
-    for elemento in lista:
+    i = 0
+    while i < len(lista) and contador < limite:
+        elemento = lista[i]
         contador += 1
-        if contador == limite:
-            break
+        i += 1
         registro = pd.DataFrame(np.array([[elemento["Rank"], elemento["Name"], elemento["Platform"], elemento["Year"],
         elemento["Genre"], elemento["Publisher"], elemento["NA_Sales"],
         elemento["EU_Sales"], elemento["JP_Sales"], elemento["Other_Sales"],
@@ -154,8 +152,7 @@ def mas_vendidos_mundo(lista):
         columns=["Rank", "Name", "Platform", "Year", "Genre", "Publisher",
         "NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales", "Global_Sales"])
         print(registro)
-                
-                
+                    
             
             
         
