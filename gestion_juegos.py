@@ -2,10 +2,6 @@ import csv
 import pandas as pd
 import numpy as np
 from typing import Any, Hashable, Iterable, Optional
-import unittest
-from unittest.mock import patch
-import pandas as pd
-import numpy as np
 
 
 def convert_csv():
@@ -154,23 +150,6 @@ def listar_juego():
         print("--------------------------------------------------------------------------------------------------------------------------------------------------------")
 
 
-def mas_vendidos_mundo(lista):
-    limite = 5
-    contador = 0
-    i = 0
-    while i < len(lista) and contador < limite:
-        elemento = lista[i]
-        contador += 1
-        i += 1
-        registro = pd.DataFrame(np.array([[elemento["Rank"], elemento["Name"], elemento["Platform"], elemento["Year"],
-                                           elemento["Genre"], elemento["Publisher"], elemento["NA_Sales"],
-                                           elemento["EU_Sales"], elemento["JP_Sales"], elemento["Other_Sales"],
-                                           elemento["Global_Sales"]]]),
-                                columns=["Rank", "Name", "Platform", "Year", "Genre", "Publisher",
-                                         "NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales", "Global_Sales"])
-        print(registro)
-
-
 def buscar_por_nombre():
     Name = input("Selecciona el juego que quieres buscar:")
     registro = buscar_dicc(lista, "Name", Name)
@@ -217,22 +196,41 @@ def elegir_genero():
     return generos[genero_juego]
 
 
-def mas_vendidos_mundo():
+def mas_vendidos_mundo(mas_vendidos):
     limite = 5
     contador = 0
     i = 0
-    while i < len(lista) and contador < limite:
-        elemento = lista[i]
+    
+    while i < len(mas_vendidos) and contador < limite:
+        elemento = mas_vendidos[i]
         contador += 1
         i += 1
-        registro = pd.DataFrame(np.array([[elemento["Rank"], elemento["Name"], elemento["Platform"], elemento["Year"],
+        registro = pd.DataFrame(np.array([[elemento["Name"], elemento["Platform"], elemento["Year"],
                                            elemento["Genre"], elemento["Publisher"], elemento["NA_Sales"],
                                            elemento["EU_Sales"], elemento["JP_Sales"], elemento["Other_Sales"],
                                            elemento["Global_Sales"]]]),
-                                columns=["Rank", "Name", "Platform", "Year", "Genre", "Publisher",
+                                columns=[ "Name", "Platform", "Year", "Genre", "Publisher",
                                          "NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales", "Global_Sales"])
         print(registro)
+        
 
+def obtener_mas_vendidos():
+    mas_vendidos = []
+    ventas = []
+    
+    for valor in lista:
+        ventas.append(float(valor["Global_Sales"]))
+    
+    ordenados = sorted(ventas,reverse=True)
+    i=0
+    
+    for i in range(5):
+        datos_mas_vendido = buscar_dicc(lista, "Global_Sales", str(ordenados[i]))
+        
+        mas_vendidos.append(datos_mas_vendido)
+        i +=1
+    mas_vendidos_mundo(mas_vendidos)
+        
 
 def juegos_siglo():
     registros_siglo = []
@@ -341,18 +339,3 @@ def lista_editores_input():
 def lista_juegos_editores(editor):
     lista_juegos = buscar_varios_dicc(lista, "Publisher", editor)
     lista_juego_2(lista_juegos)
-
-
-"""
-class Test_lista_juego_genero(unittest.TestCase):
-    
-    @patch('builtins.input')
-    def test_lista_juegos_genero(self, mock_input):
-        GENERO_A_PROBAR = "Sports"
-        lista_por_genero = buscar_varios_dicc(lista, "Genre", GENERO_A_PROBAR)
-        self.assertEqual(lista_por_genero[0]["Genre"],GENERO_A_PROBAR)
-        
-if __name__ == "__main__":
-    unittest.main()
-    
-"""
